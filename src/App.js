@@ -1,24 +1,41 @@
-import logo from './logo.svg';
+import { useState, createContext } from 'react';
 import './App.css';
+import Tasks from './components/Tasks';
+
+
+
+export const Context = createContext(null);
+export const ThemeContext = createContext(null);
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+  const [name, setName] = useState('');
+
+  const [mode, setMode] = useState('light');
+
+
+  const handleAddNewTask = () => {
+    const items = [...tasks, name];
+    setTasks(items);
+  };
+
+  const themeValue = {
+    mode: mode, 
+    setMode: setMode, 
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div className={mode}>
+    <ThemeContext.Provider value={themeValue}>
+      <Context.Provider value={tasks}>
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <button onClick={handleAddNewTask}>create new task</button>
+        <Tasks />
+      </Context.Provider>
+    </ThemeContext.Provider>
     </div>
+
   );
 }
 

@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.light {
+  background-color: aliceblue;
+  color:  rgb(27, 27, 27);
+  transition: all .3s ease-in-out;
+
+}
+
+.dark {
+  background-color: rgb(27, 27, 27);
+  color: aliceblue;
+  transition: all .3s ease-in-out;
+}
