@@ -1,16 +1,15 @@
 import React, {useContext} from 'react'
-import { Context } from '../App'
-import Theme from './Theme';
+import { TaskContext } from '../App'
+import ThemeBackground from './ThemeBackground';
 function List() {
-  const data = useContext(Context)
-  console.log(data)
+  const data = useContext(TaskContext)
   return (
     <>
       <h3>List</h3>
       <ul>
         {data.map((task) => <li key={task}>{task}</li>)}
       </ul>
-      <Theme />
+      <ThemeBackground />
     </>
   
   )
